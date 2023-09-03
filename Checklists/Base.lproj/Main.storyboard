@@ -74,10 +74,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Vb-fq-1ou">
+                                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Vb-fq-1ou">
                                                     <rect key="frame" x="20" y="11" width="353" height="144"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="done" destination="Ueu-89-hiS" eventType="editingDidEndOnExit" id="Phq-PO-nmF"/>
+                                                        <outlet property="delegate" destination="Ueu-89-hiS" id="P3y-on-GAO"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -100,7 +104,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="done" id="QUc-7g-T8V">
                                 <connections>
-                                    <action selector="done" destination="Ueu-89-hiS" id="0Ya-lm-0ye"/>
+                                    <action selector="done" destination="Ueu-89-hiS" id="VQR-Jg-Ipe"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="cancel" id="Nuo-h7-yFZ">
@@ -111,6 +115,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneBarButton" destination="QUc-7g-T8V" id="BYc-6w-tzw"/>
                         <outlet property="textField" destination="3Vb-fq-1ou" id="dSp-hT-ao6"/>
                     </connections>
                 </tableViewController>
