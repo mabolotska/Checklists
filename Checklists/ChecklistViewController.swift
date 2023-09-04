@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ChecklistViewController: UITableViewController {
+class ChecklistViewController: UITableViewController, AddItemViewControllerDelegate {
+    
+    
     var items = [ChecklistItem]()
     
     
@@ -58,6 +60,19 @@ class ChecklistViewController: UITableViewController {
       label.text = item.text
     }
     
+    // MARK: - Navigation
+    override func prepare(
+      for segue: UIStoryboardSegue,
+      sender: Any?
+    ){
+        // 1
+          if segue.identifier == "AddItem" {
+            // 2
+            let controller = segue.destination as! AddItemViewController
+            // 3
+            controller.delegate = self
+        } }
+    
     override func tableView(
       _ tableView: UITableView,
       numberOfRowsInSection section: Int
@@ -105,14 +120,31 @@ class ChecklistViewController: UITableViewController {
     
     
     @IBAction func addItem() {
-        let newRowIndex = items.count
-          let item = ChecklistItem()
-          item.text = "I am a new row"
-          items.append(item)
-          let indexPath = IndexPath(row: newRowIndex, section: 0)
-          let indexPaths = [indexPath]
-          tableView.insertRows(at: indexPaths, with: .automatic)
+//        let newRowIndex = items.count
+//          let item = ChecklistItem()
+//          item.text = "I am a new row"
+//          items.append(item)
+//          let indexPath = IndexPath(row: newRowIndex, section: 0)
+//          let indexPaths = [indexPath]
+//          tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
+    
+    // MARK: - Add Item ViewController Delegates
+    func addItemViewController(
+      _ controller: AddItemViewController,
+      didFinishAdding item: ChecklistItem
+    ){
+    let newRowIndex = items.count
+        items.append(item)
+      let indexPath = IndexPath(row: newRowIndex, section: 0)
+      let indexPaths = [indexPath]
+      tableView.insertRows(at: indexPaths, with: .automatic)
+      navigationController?.popViewController(animated:true)
+    }
+    
+    func addItemViewControllerDidCancel(_ controller: AddItemViewController) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
