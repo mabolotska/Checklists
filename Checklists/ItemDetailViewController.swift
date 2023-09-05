@@ -10,20 +10,48 @@ import UIKit
 
 protocol AddItemViewControllerDelegate: AnyObject {
   func addItemViewControllerDidCancel(
-    _ controller: AddItemViewController)
+    _ controller: ItemDetailViewController)
   func addItemViewController(
-    _ controller: AddItemViewController,
+    _ controller: ItemDetailViewController,
     didFinishAdding item: ChecklistItem
   )
+    
+    func addItemViewController(
+      _ controller: ItemDetailViewController,
+      didFinishEditing item: ChecklistItem
+    )
 }
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
  weak var delegate: AddItemViewControllerDelegate?
+    
+    var itemToEdit: ChecklistItem?
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
     @IBOutlet weak var textField: UITextField!
+    
+  
+    
+    override func viewDidLoad() {
+      if let item = itemToEdit {
+        title = "Edit Item"
+        textField.text = item.text
+      }
+        
+        //the same code as above
+//        if let itemToEdit = itemToEdit {
+//          title = "Edit Item"
+//          textField.text = itemToEdit.text
+//        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        textField.becomeFirstResponder()
+    }
+    
     
     override func tableView(
         _ tableView: UITableView,
@@ -32,10 +60,6 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
         return nil
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        textField.becomeFirstResponder()
-    }
     
     @IBAction func cancel() {
       //  navigationController?.popViewController(animated: true)
@@ -44,9 +68,16 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     }
     @IBAction func done() {
         
-        let item = ChecklistItem()
-         item.text = textField.text!
-         delegate?.addItemViewController(self, didFinishAdding: item)
+        if let item = itemToEdit {
+          item.text = textField.text!
+          delegate?.addItemViewController(
+      self,
+            didFinishEditing: item)
+        } else {
+          let item = ChecklistItem()
+          item.text = textField.text!
+          delegate?.addItemViewController(self, didFinishAdding: item)
+      }
         
     }
     
