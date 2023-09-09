@@ -8,15 +8,15 @@
 import UIKit
 
 
-protocol AddItemViewControllerDelegate: AnyObject {
+protocol ItemDetailViewControllerDelegate: AnyObject {
   func addItemViewControllerDidCancel(
     _ controller: ItemDetailViewController)
-  func addItemViewController(
+  func itemDetailViewController(
     _ controller: ItemDetailViewController,
     didFinishAdding item: ChecklistItem
   )
     
-    func addItemViewController(
+    func itemDetailViewController(
       _ controller: ItemDetailViewController,
       didFinishEditing item: ChecklistItem
     )
@@ -24,7 +24,7 @@ protocol AddItemViewControllerDelegate: AnyObject {
 
 class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     
- weak var delegate: AddItemViewControllerDelegate?
+ weak var delegate: ItemDetailViewControllerDelegate?
     
     var itemToEdit: ChecklistItem?
     
@@ -70,13 +70,13 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
           item.text = textField.text!
-          delegate?.addItemViewController(
+          delegate?.itemDetailViewController(
       self,
             didFinishEditing: item)
         } else {
           let item = ChecklistItem()
           item.text = textField.text!
-          delegate?.addItemViewController(self, didFinishAdding: item)
+          delegate?.itemDetailViewController(self, didFinishAdding: item)
       }
         
     }
