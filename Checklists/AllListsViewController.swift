@@ -16,8 +16,9 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier:
-        cellIdentifier)
+     //   tableView.register(UITableViewCell.self, forCellReuseIdentifier:cellIdentifier)
+        
+        
         dataModel.loadChecklists()
       
         // Add placeholder data
@@ -63,11 +64,21 @@ class AllListsViewController: UITableViewController, ListDetailViewControllerDel
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+    //    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 
+        let cell: UITableViewCell!
+        if let tmp = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+          cell = tmp
+        } else {
+          cell = UITableViewCell(
+            style: .subtitle,
+            reuseIdentifier: cellIdentifier)
+        }
+        
         let checklist = dataModel.lists[indexPath.row]
          cell.textLabel!.text = checklist.name
          cell.accessoryType = .detailDisclosureButton
+        cell.detailTextLabel!.text = "\(checklist.countUncheckedItems()) Remaining"
           return cell
     }
     
