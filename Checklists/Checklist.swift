@@ -11,6 +11,8 @@ class Checklist: NSObject, Codable {
     var name = ""
     var items = [ChecklistItem]()
     
+    var iconName = ""
+    
     
     
     init(name: String) {

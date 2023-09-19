@@ -54,6 +54,8 @@ class DataModel {
         print("Error encoding list array: \(error.localizedDescription)")
     }
               }
+    
+    
               // this method is now called loadChecklists()
               func loadChecklists() {
                 let path = dataFilePath()
@@ -61,9 +63,10 @@ class DataModel {
                   let decoder = PropertyListDecoder()
                   do {
                     // You decode to an object of [Checklist] type to lists
-                    lists = try decoder.decode(
-                      [Checklist].self,
-                      from: data)
+                    lists = try decoder.decode([Checklist].self, from: data)
+                      sortChecklists()
+                      
+                      
                   } catch {
                     print("Error decoding list array: \(error.localizedDescription)")
               } }
@@ -86,4 +89,11 @@ class DataModel {
         userDefaults.set(false, forKey: "FirstTime")
       }
     }
+    
+    func sortChecklists() {
+      lists.sort { list1, list2 in
+        return list1.name.localizedStandardCompare(list2.name)
+    == .orderedAscending
+    } }
+    
 }

@@ -198,6 +198,44 @@
             </objects>
             <point key="canvasLocation" x="659" y="-725"/>
         </scene>
+        <!--IconPickerViewController-->
+        <scene sceneID="Svz-2u-KLr">
+            <objects>
+                <tableViewController storyboardIdentifier="IconPickerViewController" title="IconPickerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7nG-vl-cUF" customClass="IconPickerViewController" customModule="Checklists" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="y76-E4-NdT">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IconCell" textLabel="Xmi-bP-bm8" style="IBUITableViewCellStyleDefault" id="uRP-bv-QMr">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uRP-bv-QMr" id="Qcz-QM-dF9">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xmi-bP-bm8">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="7nG-vl-cUF" id="P4y-pI-CaV"/>
+                            <outlet property="delegate" destination="7nG-vl-cUF" id="vX7-d8-HYR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose icon" id="len-Ir-o7h"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zAW-Bi-k6H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989" y="32"/>
+        </scene>
         <!--Add Checklist-->
         <scene sceneID="uo7-1e-ksc">
             <objects>
@@ -237,6 +275,43 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="3cV-y4-Wyz">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="76" id="myJ-gD-ZKi">
+                                        <rect key="frame" x="0.0" y="130" width="393" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="myJ-gD-ZKi" id="cCR-ev-aTc">
+                                            <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="76"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UKz-xH-W2m">
+                                                    <rect key="frame" x="272" y="6" width="68" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="Wr3-rE-XrP"/>
+                                                        <constraint firstAttribute="width" constant="68" id="lqC-S0-gTu"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Icon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znc-4f-HuA">
+                                                    <rect key="frame" x="34" y="27.666666666666671" width="231" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UKz-xH-W2m" firstAttribute="top" secondItem="cCR-ev-aTc" secondAttribute="top" constant="6" id="Bou-6S-sIC"/>
+                                                <constraint firstItem="Znc-4f-HuA" firstAttribute="centerY" secondItem="cCR-ev-aTc" secondAttribute="centerY" id="ECK-FD-oSG"/>
+                                                <constraint firstItem="UKz-xH-W2m" firstAttribute="leading" secondItem="Znc-4f-HuA" secondAttribute="trailing" constant="7" id="IvL-Lc-byF"/>
+                                                <constraint firstItem="Znc-4f-HuA" firstAttribute="leading" secondItem="cCR-ev-aTc" secondAttribute="leadingMargin" constant="14" id="Qhh-0P-gjq"/>
+                                                <constraint firstAttribute="trailing" secondItem="UKz-xH-W2m" secondAttribute="trailing" constant="22.670000000000002" id="eeS-Ds-F5x"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7nG-vl-cUF" kind="show" identifier="PickIcon" id="7Bf-dj-vtq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="9cb-CI-kim" id="nVn-ZZ-SSX"/>
@@ -259,12 +334,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="doneBarButton" destination="rPV-1I-RYt" id="ziE-OK-fdX"/>
+                        <outlet property="iconImage" destination="UKz-xH-W2m" id="tvz-5f-Huy"/>
                         <outlet property="textField" destination="m3L-Rd-buN" id="qLA-vJ-xd8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VID-gu-9de" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1911" y="51"/>
+            <point key="canvasLocation" x="1910.6870229007632" y="50.70422535211268"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
