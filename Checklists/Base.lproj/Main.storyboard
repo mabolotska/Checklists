@@ -184,6 +184,24 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mju-W3-eLh" id="P1e-bf-gc6">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeK-T2-p3X">
+                                                    <rect key="frame" x="23" y="11.333333333333336" width="71" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="cj1-VC-3qq">
+                                                    <rect key="frame" x="99" y="4" width="289" height="36"/>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VeK-T2-p3X" firstAttribute="centerY" secondItem="P1e-bf-gc6" secondAttribute="centerY" id="91y-8Z-WEO"/>
+                                                <constraint firstAttribute="trailing" secondItem="cj1-VC-3qq" secondAttribute="trailing" constant="5" id="FEO-Xr-FHC"/>
+                                                <constraint firstItem="cj1-VC-3qq" firstAttribute="centerY" secondItem="P1e-bf-gc6" secondAttribute="centerY" id="arr-4Y-0fn"/>
+                                                <constraint firstItem="VeK-T2-p3X" firstAttribute="leading" secondItem="P1e-bf-gc6" secondAttribute="leadingMargin" constant="3" id="mPN-3p-vKZ"/>
+                                                <constraint firstItem="cj1-VC-3qq" firstAttribute="leading" secondItem="VeK-T2-p3X" secondAttribute="trailing" priority="999" constant="5" id="miT-b7-hgf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -209,13 +227,15 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="datePicker" destination="cj1-VC-3qq" id="Clq-BV-G3n"/>
                         <outlet property="doneBarButton" destination="QUc-7g-T8V" id="BYc-6w-tzw"/>
+                        <outlet property="shouldRemindSwitch" destination="vZf-kk-6Bs" id="X8F-Rv-uzs"/>
                         <outlet property="textField" destination="3Vb-fq-1ou" id="dSp-hT-ao6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pZR-hf-ZOj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2860" y="102"/>
+            <point key="canvasLocation" x="2858.7786259541986" y="101.40845070422536"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zg0-S3-q2y">

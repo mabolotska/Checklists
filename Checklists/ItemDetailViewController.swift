@@ -40,6 +40,9 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
       if let item = itemToEdit {
         title = "Edit Item"
         textField.text = item.text
+          
+          shouldRemindSwitch.isOn = item.shouldRemind  // add this
+              datePicker.date = item.dueDate     
       }
         
         //the same code as above
@@ -72,12 +75,17 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
           item.text = textField.text!
-          delegate?.itemDetailViewController(
-      self,
-            didFinishEditing: item)
+            
+            item.shouldRemind = shouldRemindSwitch.isOn
+              item.dueDate = datePicker.date
+          delegate?.itemDetailViewController(self, didFinishEditing: item)
         } else {
           let item = ChecklistItem()
           item.text = textField.text!
+            
+            item.checked = false
+            item.shouldRemind = shouldRemindSwitch.isOn
+            item.dueDate = datePicker.date
           delegate?.itemDetailViewController(self, didFinishAdding: item)
       }
         
