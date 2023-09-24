@@ -75,7 +75,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
         
         if let item = itemToEdit {
           item.text = textField.text!
-            
+            item.scheduleNotification()
             item.shouldRemind = shouldRemindSwitch.isOn
               item.dueDate = datePicker.date
           delegate?.itemDetailViewController(self, didFinishEditing: item)
@@ -116,6 +116,15 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         doneBarButton.isEnabled = false
         return true
+    }
+    
+    @IBAction func shouldRemindToggled(_ switchControl: UISwitch) {
+      textField.resignFirstResponder()
+      if switchControl.isOn {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) {_, _
+    in
+    } }
     }
     
 }

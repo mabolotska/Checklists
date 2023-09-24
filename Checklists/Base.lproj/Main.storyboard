@@ -168,6 +168,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vZf-kk-6Bs">
                                                     <rect key="frame" x="322" y="6.3333333333333321" width="51" height="30.999999999999996"/>
+                                                    <connections>
+                                                        <action selector="shouldRemindToggled:" destination="Ueu-89-hiS" eventType="touchUpInside" id="J6K-TZ-3Of"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
